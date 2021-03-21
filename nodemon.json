@@ -1,0 +1,5 @@
+{
+  "env": {
+    "DB_CONNECTION_STRING": "mongodb+srv://chandra:3LriY1E3o0IFjoUP@e-restaurant.cn2vy.mongodb.net/zenser?retryWrites=true&w=majority"
+  }
+}
