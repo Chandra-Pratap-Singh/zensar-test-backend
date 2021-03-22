@@ -24,12 +24,12 @@ exports.deleteUser = (req, res, next) => {
 };
 exports.addOrUpdateUser = (req, res, next) => {
   const userData = req.body.user;
-  if (userData._id) {
-    User.findByIdAndUpdate({ ...userData })
+  if (!!userData._id) {
+    User.findByIdAndUpdate(userData._id, { ...userData })
       .then((user) => res.status(200).json(user))
       .catch((err) => res.status(500));
   } else {
-    const user = User({ ...userData });
+    const user = User({ ...userData, id: `${Date.now()}` });
     user
       .save()
       .then((user) => res.status(201).json(user))

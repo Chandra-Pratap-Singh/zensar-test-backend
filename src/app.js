@@ -22,12 +22,16 @@ app.use("/user", userRouter);
 app.use("/", (req, res) => res.status(200).json("working"));
 
 mongoose
-  .connect(process.env.DB_CONNECTION_STRING, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    process.env.DB_CONNECTION_STRING ||
+      "mongodb+srv://chandra:3LriY1E3o0IFjoUP@e-restaurant.cn2vy.mongodb.net/zenser?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
-    app.listen(process.env.PORT || 3000, () =>
+    app.listen(process.env.PORT || 4000, () =>
       console.log("App is listening up and running")
     );
   })
